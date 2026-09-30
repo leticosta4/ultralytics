@@ -55,7 +55,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ${{ github.workspace }}/.ultralytics_cache
-          key: ultralytics-test-assets-${{ runner.os }}-${{ hashFiles('tests/cache_test_assets.py', 'tests/__init__.py')}
+          key: ultralytics-test-assets-${{ runner.os }}-${{ hashFiles('tests/cache_test_assets.py', 'tests/__init__.py')}}
           restore-keys: |
             ultralytics-test-assets-${{ runner.os }}-
       - name: Pre-cache test assets
