@@ -554,4 +554,5 @@ class ViT(nn.Module):
             block.attn._setup_rel_pos(input_size=(imgsz[0] // self.patch_size, imgsz[1] // self.patch_size))
             block.attn._setup_rope_freqs(input_size=(imgsz[0] // self.patch_size, imgsz[1] // self.patch_size))
 
+
 # track-flaky: commit trivial para disparar CI (2026-09-28)
