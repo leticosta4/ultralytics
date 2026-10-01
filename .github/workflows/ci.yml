@@ -14,7 +14,7 @@ on:
   push:
     branches: [main]
   pull_request:
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   Tests:
