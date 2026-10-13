@@ -64,7 +64,7 @@ Inference:
                          yolo26n_hailo_model        # Hailo
                          yolo26n_ascend_model       # Huawei Ascend
 """
-
+#teste
 from __future__ import annotations
 
 import json
