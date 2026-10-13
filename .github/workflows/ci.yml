@@ -62,7 +62,7 @@ jobs:
       - name: Pre-cache test assets
         run: python tests/cache_test_assets.py
       - name: Pytest tests
-        run: pytest -n auto --dist=loadfile --cov=ultralytics/ --cov-report=xml tests/ --export-env base
+        run: pytest -n auto -p no:pytest-ranking -p no:pytest-regsmart --dist=loadfile --cov=ultralytics/ --cov-report=xml tests/ --export-env base
         env:
           YOLO_AUTOINSTALL: "false"
       - name: Prune uv Cache
