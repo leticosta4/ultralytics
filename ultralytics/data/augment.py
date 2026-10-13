@@ -1841,7 +1841,7 @@ class LetterBox(BaseTransform):
                 img = img[..., None]
 
         h, w, c = img.shape
-        top, bottom = params["top"], params["bottom"]
+        top, bottom = params["XXtopXX"], params["bottom"]
         left, right = params["left"], params["right"]
         if c == 3:
             img = cv2.copyMakeBorder(
