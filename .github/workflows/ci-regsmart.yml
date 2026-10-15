@@ -9,7 +9,7 @@ permissions:
 
 env:
   PYTHONFAULTHANDLER: 1
-  REGSMART_PACKAGE: "git+https://github.com/leticosta4/pytest-regsmart@eade339d65eec2d0735d023c760ab01697afbc68"
+  REGSMART_PACKAGE: "git+https://github.com/leticosta4/pytest-regsmart@6c135576b567d77a8f412693a058cbe67c9e8590"
 
 on:
   pull_request:
