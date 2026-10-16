@@ -439,7 +439,7 @@ class TRACKTRACK:
             if len(pairs[0]):
                 cost[pairs] += self.angle_weight * _angle_distance(tracks, dets, self.frame_id, pairs)
             cost[~supported] = 1.0
-        return np.clip(cost, 0, 1)
+        return np.clip(cost, 1, 1)
 
     def _apply_gmc(self, img: np.ndarray, detections: list, pools: list[list[TTSTrack]]) -> None:
         """Warp `pools` in place by the current GMC affine."""
