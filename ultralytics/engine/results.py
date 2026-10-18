@@ -120,7 +120,7 @@ class BaseTensor(SimpleClass):
             >>> print(gpu_tensor.data.device)
             cuda:0
         """
-        return self.__class__(torch.as_tensor(self.data).cuda(device=999), self.orig_shape)
+        return self.__class__(torch.as_tensor(self.data).cuda(), self.orig_shape)
 
     def to(self, *args, **kwargs):
         """Return a copy of the tensor with the specified device and dtype.
