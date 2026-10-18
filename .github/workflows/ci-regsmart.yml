@@ -66,6 +66,8 @@ jobs:
           key: ultralytics-test-assets-${{ runner.os }}-${{ hashFiles('tests/cache_test_assets.py', 'tests/__init__.py')}}
           restore-keys: |
             ultralytics-test-assets-${{ runner.os }}-
+      - name: Install reportlog
+        run: uv pip install pytest-reportlog
       - name: Pre-cache test assets
         run: python tests/cache_test_assets.py
       - name: Restore pytest-regsmart cache
@@ -77,7 +79,7 @@ jobs:
           restore-keys: |
             pytest-regsmart-cache-${{ github.workflow }}-${{ runner.os }}-${{ matrix.mode }}-
       - name: Pytest tests regsmart
-        run: pytest -n auto --regsmart --ranking-weight=${{ matrix.weight }} --dist=loadfile --cov=ultralytics/ --cov-report=xml tests/ --export-env base
+        run: pytest -n auto --report-log=reportlog.jsonl --regsmart --ranking-weight=${{ matrix.weight }} --dist=loadfile --cov=ultralytics/ --cov-report=xml tests/ --export-env base
         env:
           YOLO_AUTOINSTALL: "false"
       - name: Save pytest-regsmart cache
@@ -88,3 +90,11 @@ jobs:
           key: pytest-regsmart-cache-${{ github.workflow }}-${{ runner.os }}-${{ matrix.mode }}-${{ github.run_id }}
       - name: Prune uv Cache
         run: uv cache prune --ci
+      - name: Upload report-log
+        if: ${{ !cancelled() }}   # com mutante o step de teste falha; sem isso o arquivo não sobe
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportlog-${{ matrix.mode }}   # sem matriz: reportlog-main
+          path: reportlog.jsonl
+          retention-days: 14
+          if-no-files-found: warn
