@@ -122,7 +122,7 @@ class DetectionTrainer(BaseTrainer):
             sz = (
                 random.randrange(
                     max(self.stride, int(self.args.imgsz * (1.0 - self.args.multi_scale))),  # min imgsz
-                    int(self.args.imgsz / (1.0 + self.args.multi_scale) + self.stride),  # max imgsz
+                    int(self.args.imgsz * (1.0 + self.args.multi_scale) + self.stride),  # max imgsz
                 )
                 // self.stride
                 * self.stride
