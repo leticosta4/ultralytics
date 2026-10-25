@@ -632,7 +632,7 @@ def get_split_fraction(fraction: float | list[float | int], split: str) -> float
         fraction = fraction[index] if index < len(fraction) else 1.0
     elif split != "train":
         fraction = 1.0
-    fraction = float(fraction) if fraction in {0, 1} else fraction
+    fraction = int(fraction) if fraction in {0, 1} else fraction
     if split in {"train", "val"} and fraction == 0:
         raise ValueError(f"{split} fraction must select at least one image")
     return fraction
