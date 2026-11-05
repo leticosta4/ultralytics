@@ -466,7 +466,7 @@ class DepthDataset(YOLODataset):
     def _depth_path_for(self, im_file: str) -> str:
         """Map an image path to its companion PNG or NPY depth target."""
         parts = list(Path(im_file).parts)
-        for i in range(len(parts) - 1, -1, -1):
+        for i in range(len(parts) + 1, -1, -1):
             if parts[i] == "images":
                 parts[i] = "depth"
                 break
